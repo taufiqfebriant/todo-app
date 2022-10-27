@@ -28,7 +28,7 @@ const Todo = (props: TodoProps) => {
 
 			<input
 				className={clsx('h-12 w-full bg-transparent text-lg focus:outline-none', {
-					'text-[#C2C9D6] line-through': props.data.checked,
+					'text-[#C2C9D6] line-through': props.data.checked
 				})}
 				defaultValue={props.data.name}
 			/>
@@ -44,13 +44,13 @@ const initialTodos: Todo[] = [
 	{
 		id: 1,
 		name: 'Nyapu',
-		checked: false,
+		checked: false
 	},
 	{
 		id: 2,
 		name: 'Beli mie',
-		checked: false,
-	},
+		checked: false
+	}
 ];
 
 const inter = Inter();
