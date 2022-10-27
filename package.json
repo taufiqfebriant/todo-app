@@ -5,8 +5,8 @@
 	"scripts": {
 		"build": "next build",
 		"dev": "next dev",
-		"typecheck": "tsc --noEmit",
 		"lint": "next lint",
+		"typecheck": "tsc --noEmit",
 		"format": "prettier --write .",
 		"start": "next start"
 	},
