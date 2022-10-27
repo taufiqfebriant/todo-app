@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: ESLint
+    name: Type check, lint, and format
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
