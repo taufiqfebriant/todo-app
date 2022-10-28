@@ -18,45 +18,34 @@ type TodoProps = {
 
 const Todo = (props: TodoProps) => {
 	return (
-		<div key={props.data.id} className="flex items-center gap-x-3 px-4">
+		<div key={props.data.id} className="flex h-12 items-center gap-x-3 px-4">
 			<input
 				type="checkbox"
-				name={`todo-${props.data.id}`}
+				name={`todo-${props.data.id}-checkbox`}
 				onClick={props.onCheckboxClick}
-				className="h-[1.125rem] w-[1.125rem]"
+				className="h-[1.125rem] w-[1.125rem] hover:cursor-pointer"
 			/>
 
 			<input
-				className={clsx('h-12 w-full bg-transparent text-lg focus:outline-none', {
+				type="text"
+				name={`todo-${props.data.id}-text`}
+				className={clsx('h-full w-full bg-transparent focus:outline-none', {
 					'text-[#C2C9D6] line-through': props.data.checked
 				})}
 				defaultValue={props.data.name}
 			/>
 
-			<button type="button" onClick={props.onDelete} className="h-12 text-red-500">
+			<button type="button" onClick={props.onDelete} className="text-red-500">
 				<FaTrash />
 			</button>
 		</div>
 	);
 };
 
-const initialTodos: Todo[] = [
-	{
-		id: 1,
-		name: 'Nyapu',
-		checked: false
-	},
-	{
-		id: 2,
-		name: 'Beli mie',
-		checked: false
-	}
-];
-
 const inter = Inter();
 
 const Home: NextPage = () => {
-	const [todos, setTodos] = useState(initialTodos);
+	const [todos, setTodos] = useState<Todo[]>([]);
 
 	const handleCheckboxClick = (id: number) => {
 		setTodos(current => {
@@ -85,27 +74,35 @@ const Home: NextPage = () => {
 
 	return (
 		<main className={`${inter.className} py-10`}>
-			<h1 className="text-center text-4xl font-bold">Todo app</h1>
+			<div className="flex items-center justify-between">
+				<h1 className="text-center text-4xl font-bold">Todo app</h1>
 
-			<div className="mt-4 flex justify-end">
 				<button
 					type="button"
 					onClick={addTodo}
 					className="flex h-8 w-8 items-center justify-center rounded-md bg-[#262E37]"
+					data-testid="add-todo-button"
 				>
 					<FaPlus />
 				</button>
 			</div>
 
-			<div className="mt-4 divide-y divide-[#313C42] rounded-md bg-[#262E37]">
-				{todos.map(todo => (
-					<Todo
-						key={todo.id}
-						data={todo}
-						onCheckboxClick={() => handleCheckboxClick(todo.id)}
-						onDelete={() => deleteTodo(todo.id)}
-					/>
-				))}
+			<div
+				className="mt-6 divide-y divide-[#313C42] rounded-md bg-[#262E37]"
+				data-testid="todos-container"
+			>
+				{todos.length ? (
+					todos.map(todo => (
+						<Todo
+							key={todo.id}
+							data={todo}
+							onCheckboxClick={() => handleCheckboxClick(todo.id)}
+							onDelete={() => deleteTodo(todo.id)}
+						/>
+					))
+				) : (
+					<p className="h-12 text-center leading-[3rem]">You have no todo</p>
+				)}
 			</div>
 		</main>
 	);
