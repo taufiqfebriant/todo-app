@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { FaPlus, FaTrash, Fa500Px } from 'react-icons/fa';
 
 type Todo = {
-	id: number;
+	id: string;
 	name: string;
 	checked: boolean;
 };
@@ -76,7 +76,7 @@ const Home: NextPage = () => {
 		<main className={`${inter.className} py-10`}>
 			<div className="flex items-center justify-between">
 				<h1 className="text-center text-4xl font-bold">
-					Todo app (Harusnya dak ke deploy)
+					Todo app (Harusnya dak ke deploy #2)
 				</h1>
 
 				<button
