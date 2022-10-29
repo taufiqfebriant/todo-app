@@ -29,6 +29,8 @@ jobs:
 
    - name: Lint
      run: npm run lint
+     env:
+      BASE_URL: $VERCEL_URL
 
    - name: Type check
      run: npm run typecheck
