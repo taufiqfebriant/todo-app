@@ -2,10 +2,10 @@ import { Inter } from '@next/font/google';
 import clsx from 'clsx';
 import type { NextPage } from 'next';
 import { useState } from 'react';
-import { FaPlus, FaTrash, Fa500Px } from 'react-icons/fa';
+import { FaPlus, FaTrash } from 'react-icons/fa';
 
 type Todo = {
-	id: string;
+	id: number;
 	name: string;
 	checked: boolean;
 };
@@ -18,7 +18,7 @@ type TodoProps = {
 
 const Todo = (props: TodoProps) => {
 	return (
-		<div key={props.data.id} className="flex h-12 items-center gap-x-3 px-4">
+		<div key={props.data.id} className='flex h-12 items-center gap-x-3 px-4'>
 			<input
 				type="checkbox"
 				name={`todo-${props.data.id}-checkbox`}
@@ -75,9 +75,7 @@ const Home: NextPage = () => {
 	return (
 		<main className={`${inter.className} py-10`}>
 			<div className="flex items-center justify-between">
-				<h1 className="text-center text-4xl font-bold">
-					Todo app (Harusnya dak ke deploy #2)
-				</h1>
+				<h1 className="text-center text-4xl font-bold">Todo app</h1>
 
 				<button
 					type="button"
