@@ -18,7 +18,7 @@ type TodoProps = {
 
 const Todo = (props: TodoProps) => {
 	return (
-		<div key={props.data.id} className='flex h-12 items-center gap-x-3 px-4'>
+		<div key={props.data.id} className="flex h-12 items-center gap-x-3 px-4">
 			<input
 				type="checkbox"
 				name={`todo-${props.data.id}-checkbox`}
