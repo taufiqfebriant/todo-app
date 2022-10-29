@@ -1,7 +1,8 @@
 name: Production Deployment
 
 env:
- VERCEL_URL: ${{ github.event.deployment_status.target_url }}
+ NODE_ENV: production
+ BASE_URL: ${{ github.event.deployment_status.target_url }}
 
 on:
  push:
@@ -29,8 +30,6 @@ jobs:
 
    - name: Lint
      run: npm run lint
-     env:
-      BASE_URL: $VERCEL_URL
 
    - name: Type check
      run: npm run typecheck
@@ -43,8 +42,6 @@ jobs:
 
    - name: Run Playwright tests
      run: npm run test:e2e
-     env:
-      BASE_URL: $VERCEL_URL
 
    - uses: actions/upload-artifact@v3
      if: ${{ always() }}
