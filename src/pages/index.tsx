@@ -2,7 +2,7 @@ import { Inter } from '@next/font/google';
 import clsx from 'clsx';
 import type { NextPage } from 'next';
 import { useState } from 'react';
-import { FaPlus, FaTrash } from 'react-icons/fa';
+import { FaPlus, FaTrash, Fa500Px } from 'react-icons/fa';
 
 type Todo = {
 	id: number;
@@ -75,7 +75,9 @@ const Home: NextPage = () => {
 	return (
 		<main className={`${inter.className} py-10`}>
 			<div className="flex items-center justify-between">
-				<h1 className="text-center text-4xl font-bold">Todo app</h1>
+				<h1 className="text-center text-4xl font-bold">
+					Todo app (Harusnya dak ke deploy)
+				</h1>
 
 				<button
 					type="button"
