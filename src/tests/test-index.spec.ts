@@ -1,7 +1,8 @@
 import { expect, test } from '@playwright/test';
+import { env } from '../env/server.mjs';
 
 test.beforeEach(async ({ page }) => {
-	await page.goto('http://localhost:3000');
+	await page.goto(env.BASE_URL);
 });
 
 test.describe('New Todo', () => {
