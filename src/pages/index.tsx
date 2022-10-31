@@ -75,7 +75,7 @@ const Home: NextPage = () => {
 	return (
 		<main className={`${inter.className} py-10`}>
 			<div className="flex items-center justify-between">
-				<h1 className="text-center text-4xl font-bold">Todo app (kamonnn)</h1>
+				<h1 className="text-center text-4xl font-bold">Todo app (ok)</h1>
 
 				<button
 					type="button"
