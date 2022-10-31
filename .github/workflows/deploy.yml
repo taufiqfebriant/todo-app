@@ -31,6 +31,8 @@ jobs:
 
       - name: Lint
         run: npm run lint
+        env:
+          BASE_URL: http://localhost:3000
 
       - name: Type check
         run: npm run typecheck
