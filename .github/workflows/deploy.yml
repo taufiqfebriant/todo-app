@@ -68,9 +68,10 @@ jobs:
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Run Tests Against Vercel
-        run:
-          env:
-            BASE_URL: ${{ github.event.push.target_url }}
+        run: npm run test:e2e
+        env:
+          NODE_ENV: test
+          BASE_URL: ${{ github.event.push.target_url }}
 
       - name: Pull Vercel Environment Information (Production)
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
