@@ -71,7 +71,7 @@ jobs:
 
       - name: Run Tests Against Vercel
         run: npm run test:e2e
-        if: github.event_name == 'push' && github.event.deployment_status.state == 'success'
+        if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
         env:
           NODE_ENV: test
           BASE_URL: ${{ github.event.deployment_status.target_url }}
