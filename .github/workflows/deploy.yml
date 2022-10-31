@@ -71,9 +71,10 @@ jobs:
 
       - name: Run Tests Against Vercel
         run: npm run test:e2e
+        if: github.event_name == 'push' && github.event.deployment_status.state == 'success'
         env:
           NODE_ENV: test
-          BASE_URL: ${{ github.event.push.target_url }}
+          BASE_URL: ${{ github.event.deployment_status.target_url }}
 
       - name: Pull Vercel Environment Information (Production)
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
