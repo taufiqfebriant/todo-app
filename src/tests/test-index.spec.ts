@@ -1,6 +1,9 @@
 import { expect, test } from '@playwright/test';
+import { env } from '../env/server.mjs';
 
 test.beforeEach(async ({ page }) => {
+	console.log(env.NODE_ENV);
+	console.log(env.BASE_URL);
 	await page.goto('/');
 });
 

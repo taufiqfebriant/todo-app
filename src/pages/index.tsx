@@ -42,7 +42,9 @@ const Todo = (props: TodoProps) => {
 	);
 };
 
-const inter = Inter();
+const inter = Inter({
+	subsets: ['latin']
+});
 
 const Home: NextPage = () => {
 	const [todos, setTodos] = useState<Todo[]>([]);
