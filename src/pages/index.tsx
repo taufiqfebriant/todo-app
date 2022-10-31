@@ -2,7 +2,7 @@ import { Inter } from '@next/font/google';
 import clsx from 'clsx';
 import type { NextPage } from 'next';
 import { useState } from 'react';
-import { FaPlus, FaTrash, Fa500Px } from 'react-icons/fa';
+import { FaPlus, FaTrash } from 'react-icons/fa';
 
 type Todo = {
 	id: number;
