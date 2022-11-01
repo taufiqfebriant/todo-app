@@ -8,7 +8,6 @@ on:
   push:
     branches:
       - main
-  deployment_status:
 
 jobs:
   build:
@@ -70,11 +69,18 @@ jobs:
       - name: Deploy Project Artifacts to Vercel (Preview)
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
 
+      - name: Waiting for 200 from the Vercel Preview
+        uses: patrickedqvist/wait-for-vercel-preview@v1.2.0
+        id: waitFor200
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 60
+
       - name: Run Tests Against Vercel
         run: npm run test:e2e
         env:
           NODE_ENV: test
-          BASE_URL: ${{ github.event.deployment_status.target_url }}
+          BASE_URL: ${{ steps.waitFor200.outputs.url }}
 
       - name: Pull Vercel Environment Information (Production)
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
