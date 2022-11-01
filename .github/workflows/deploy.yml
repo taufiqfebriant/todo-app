@@ -74,7 +74,6 @@ jobs:
         id: waitFor200
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 60
 
       - name: Run Tests Against Vercel
         run: npm run test:e2e
